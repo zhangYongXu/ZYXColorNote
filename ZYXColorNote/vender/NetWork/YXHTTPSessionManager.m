@@ -1,0 +1,25 @@
+//
+//  GGHTTPClient.m
+//  YXNetWorkEngineV1.0
+//
+//  Created by Static Ga on 13-11-14.
+//  Copyright (c) 2013年 Static Ga. All rights reserved.
+//
+
+#import "YXHTTPSessionManager.h"
+
+@implementation YXHTTPSessionManager
+
++ (instancetype)sessionManager {
+    static YXHTTPSessionManager *mySessionManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        mySessionManager = [[YXHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:APPBaseURL]];
+        mySessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [mySessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [mySessionManager.requestSerializer setValue:@"Accept-Encoding" forHTTPHeaderField:@"gzip,deflate"];
+    });
+    return mySessionManager;
+}
+
+@end

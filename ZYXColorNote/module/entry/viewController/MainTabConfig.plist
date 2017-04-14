@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>storyBoardName</key>
+		<string>TabHome</string>
+		<key>VC_SBID</key>
+		<string>TabBarNVC_SBID</string>
+		<key>VC_Title</key>
+		<string>发现</string>
+		<key>VC_ImageName</key>
+		<string>strawberry_home_find</string>
+		<key>VC_SelectedImageName</key>
+		<string>strawberry_home_find_sel</string>
+	</dict>
+	<dict>
+		<key>storyBoardName</key>
+		<string>TabLayout</string>
+		<key>VC_SBID</key>
+		<string>LayoutViewController_SBID</string>
+		<key>VC_Title</key>
+		<string></string>
+		<key>VC_ImageName</key>
+		<string>strawberry_home_content</string>
+		<key>VC_SelectedImageName</key>
+		<string>strawberry_home_content_sel</string>
+	</dict>
+	<dict>
+		<key>storyBoardName</key>
+		<string>TabMine</string>
+		<key>VC_SBID</key>
+		<string>TabBarNVC_SBID</string>
+		<key>VC_Title</key>
+		<string>我的</string>
+		<key>VC_ImageName</key>
+		<string>strawberry_home_mine</string>
+		<key>VC_SelectedImageName</key>
+		<string>strawberry_home_mine_sel</string>
+	</dict>
+</array>
+</plist>

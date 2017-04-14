@@ -1,0 +1,356 @@
+//
+//  YXNetWork.m
+//  YXNetWorkEngineV1.0
+//
+//  Created by Static Ga on 13-11-14.
+//  Copyright (c) 2013年 Static Ga. All rights reserved.
+//
+
+#import "YXNetWork.h"
+#import "YXHTTPSessionManager.h"
+#import "AFHTTPRequestOperation.h"
+#import <CommonCrypto/CommonHMAC.h>
+#import "SVProgressHUD.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "AFURLRequestSerialization.h"
+#import "YXHTTPOperationManager.h"
+#import "Reachability.h"
+
+@implementation YXNetWork
++ (BOOL)isNetworkConnected
+{
+    
+    Reachability* reachability = [Reachability reachabilityForInternetConnection];
+    
+    return [reachability currentReachabilityStatus] != NotReachable;
+}
+
++(NSURLRequest *)getUrlRequestWithMethod:(NSString *)method Path:(NSString *)path DicParam:(NSDictionary *)param{
+    AFHTTPRequestSerializer * requestSerializer = [[AFHTTPRequestSerializer alloc] init];
+     NSError *serializationError = nil;
+    NSMutableURLRequest * request = [requestSerializer requestWithMethod:method URLString:path parameters:param error:&serializationError];
+    return request;
+}
++ (void)requestHttpByURLRequest:(NSURLRequest *)request  sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock {
+
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    YXHTTPOperationManager * manager = [YXHTTPOperationManager operationManager];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(sucessBlock){
+            sucessBlock(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(failedBlock){
+            failedBlock(error.description);
+        }
+    }];
+    [manager.operationQueue addOperation:operation];
+    
+}
+
+
++ (void)postHttpEx:(NSString *)path parameters:(NSDictionary *)par start:(GGWillStartBlock)startLoad sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlockWithCode)failedBlock {
+}
+
++ (void)postHttp:(NSString *)path parameters:(NSDictionary *)par sucess:(GGSucessBlock)sucessBlock
+          failed:(GGFailedBlock)failedBlock {
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    [[YXHTTPSessionManager sessionManager] POST:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(@" ");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"NSURLSessionDataTask is %@",task);
+        if (failedBlock) {
+            failedBlock(error.localizedDescription);
+        }
+    }];
+    [SVProgressHUD showWithStatus:nil maskType:4];
+
+    
+}
+
++ (void)postHttp:(NSString *)path parameters:(NSDictionary *)par showProgress:(BOOL)show sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock
+{
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    if (show) {
+        [SVProgressHUD showWithStatus:nil maskType:4];
+    }
+    [[YXHTTPSessionManager sessionManager] POST:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        if(show){
+            [SVProgressHUD dismiss];
+        }
+        
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(@"");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"NSURLSessionDataTask is %@",task);
+        if (failedBlock) {
+            failedBlock(error.localizedDescription);
+        }
+    }];
+
+    
+}
++ (void)postHttpWithErrorCode:(NSString *)path parameters:(NSDictionary *)par sucess:(GGSucessBlock)sucessBlock
+          failed:(GGFailedBlockWithCode)failedBlock {
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    [SVProgressHUD showWithStatus:nil maskType:4];
+    [[YXHTTPSessionManager sessionManager] POST:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        if (responseObject) {
+            id error = [responseObject objectForKey:@"error"];
+            if (error) {
+                id message = [error objectForKey:@"message"];
+                NSNumber* errorCode = [error objectForKey:@"code"];
+                if (errorCode) {
+            
+                    failedBlock([errorCode longValue], message);
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"未知错误！"];
+                }
+            }else {
+                
+                if (sucessBlock) {
+                    sucessBlock(responseObject);
+                }
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(-2, @"");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"NSURLSessionDataTask is %@",task);
+        if (failedBlock) {
+            failedBlock(-1, error.localizedDescription);
+        }
+
+    }];
+}
+
+
++ (void)getHttpEx:(NSString *)path parameters:(NSDictionary *)par start:(GGWillStartBlock)startBlock sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlockWithCode)failedBlock
+{
+    if (startBlock) {
+        if(!startBlock()){
+            failedBlock(-10, @"network busy!");
+            return;
+        };
+    }
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    [[YXHTTPSessionManager sessionManager] GET:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        //处理status
+        NSLog(@"responseObject %@",responseObject);
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(-2,@" ");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSDictionary *errorDict = nil;
+        [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
+        
+        if (failedBlock) {
+            failedBlock(-2,[NSString stringWithFormat:@"%@", [errorDict objectForKey:@"code"]]);
+        }
+    }];
+}
+
++ (void)getHttp:(NSString *)path parameters:(NSDictionary *)par sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock {
+    
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+   
+    [SVProgressHUD showWithStatus:nil maskType:4];
+    [[YXHTTPSessionManager sessionManager] GET:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        //处理status
+        NSLog(@"responseObject %@",responseObject);
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(@" ");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSDictionary *errorDict = nil;
+        [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
+        
+        if (failedBlock) {
+            failedBlock([NSString stringWithFormat:@"%@", [errorDict objectForKey:@"code"]]);
+        }
+    }];
+}
+     
++ (void)getHttp:(NSString *)path parameters:(NSDictionary *)par showProgress:(BOOL)show sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock {
+    
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    if (show) {
+        [SVProgressHUD showWithStatus:nil maskType:4];
+    }
+    [[YXHTTPSessionManager sessionManager] GET:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        if(show){
+            [SVProgressHUD dismiss];
+        }
+        //处理status
+        NSLog(@"responseObject %@",responseObject);
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(@" ");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSDictionary *errorDict = nil;
+        [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
+        
+        if (failedBlock) {
+            failedBlock([NSString stringWithFormat:@"%@", [errorDict objectForKey:@"code"]]);
+        }
+    }];
+}
++ (void)getHttpWithErrorCode:(NSString *)path parameters:(NSDictionary *)par sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlockWithCode)failedBlock {
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    
+    
+    [[YXHTTPSessionManager sessionManager] GET:path parameters:par success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        //处理status
+        NSLog(@"responseObject %@",responseObject);
+        if (responseObject) {
+            if (sucessBlock) {
+                sucessBlock(responseObject);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock(-1,@" ");
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSDictionary *errorDict = nil;
+        [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
+        
+        if (failedBlock) {
+            failedBlock(-1,[NSString stringWithFormat:@"%@", [errorDict objectForKey:@"code"]]);
+        }
+    }];
+}
++ (void)multipartFormRequestWithMethod:(NSString*)post path:(NSString*)path parameters:(NSDictionary*)parameters filesArray:(NSArray*) filesArray uploadProgressBlock:(UploadProgressBlock) progressBlock uploadSuccessBlock:(UploadSuccessBlock)successBlock   uploadFaildBlock:(UploadFaildBlock) faildBlock{
+    
+    YXHTTPOperationManager * manager = [YXHTTPOperationManager operationManager];
+    NSError *serializationError = nil;
+    NSString * urlString = [[NSURL URLWithString:path relativeToURL:manager.baseURL] absoluteString];
+    NSMutableURLRequest *mulRequest = [manager.requestSerializer multipartFormRequestWithMethod:post URLString:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSLog(@"============%@",parameters);
+        for(NSString * key in parameters.allKeys){
+            id value = [parameters objectForKey:key];
+            if([value isKindOfClass:[NSString class]]){
+                [formData appendPartWithFormData:[value dataUsingEncoding:NSUTF8StringEncoding] name:key];
+                NSLog(@"if key=%@ value =%@",key,value);
+            }else if([value isKindOfClass:[NSNumber class]]){
+                NSString * s = [NSString stringWithFormat:@"%@",value];
+                [formData appendPartWithFormData:[s dataUsingEncoding:NSUTF8StringEncoding] name:key];
+                NSLog(@"else if key=%@ value =%@",key,value);
+            }else{
+                NSLog(@"else key=%@ value =%@",key,value);
+            }
+        }
+        int i=0;
+        for(InputFileModel * model in filesArray){
+            i++;
+            NSLog(@"第%d张图 name =%@ type=%@",i,model.fileName,model.fileType);
+            [formData appendPartWithFileData:model.fileData name:model.inputName fileName:model.fileName mimeType:model.fileType];
+        }
+    } error:&serializationError];
+    
+    NSLog(@"upload.................=%@",mulRequest);
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:mulRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"setCompletionBlockWithSuccess....=%@",responseObject);
+        NSLog(@"setCompletionBlockWithSuccessSTR.....%@",[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        if(successBlock){
+            successBlock(operation,responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"setCompletionBlockWithFalure....=%@",error);
+        if(faildBlock){
+            faildBlock(operation,error);
+        }
+    }];
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@".............totalBytesWritten=%lld",totalBytesWritten);
+        NSLog(@".....totalBytesExpectedToWrite=%lld",totalBytesExpectedToWrite);
+        if(progressBlock){
+            progressBlock(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+        }
+    }];
+    [manager.operationQueue addOperation:operation];
+}
+@end
+@implementation InputFileModel
+
+
+@end

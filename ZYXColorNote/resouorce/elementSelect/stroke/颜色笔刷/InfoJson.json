@@ -1,0 +1,38 @@
+[
+     {
+         "strokeBrushID": "strokeBrush_colorBlue",
+         "strokeBrushName": "荧光蓝",
+         "showImageFileName": "1_blue.PNG",
+         "strokeBrushColorHex":"#a1f4ff"
+     },
+     {
+         "strokeBrushID": "strokeBrush_colorYellow",
+         "strokeBrushName": "荧光黄",
+         "showImageFileName": "2_yellow.PNG",
+         "strokeBrushColorHex":"#ffffa1"
+     },
+     {
+         "strokeBrushID": "strokeBrush_colorGreen",
+         "strokeBrushName": "荧光绿",
+         "showImageFileName": "3_green.PNG",
+         "strokeBrushColorHex":"#b9ffa2"
+     },
+     {
+         "strokeBrushID": "strokeBrush_colorRed",
+         "strokeBrushName": "荧光红",
+         "showImageFileName": "4_red.PNG",
+         "strokeBrushColorHex":"#ffa4e4"
+     },
+     {
+         "strokeBrushID": "strokeBrush_colorPerple",
+         "strokeBrushName": "荧光紫",
+         "showImageFileName": "5_perple.PNG",
+         "strokeBrushColorHex":"#edc9ff"
+     },
+     {
+         "strokeBrushID": "strokeBrush_colorOrange",
+         "strokeBrushName": "荧光橙",
+         "showImageFileName": "6_orange.PNG",
+         "strokeBrushColorHex":"#ffd266"
+     }
+]

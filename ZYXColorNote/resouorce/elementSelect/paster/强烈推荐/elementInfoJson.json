@@ -1,0 +1,58 @@
+{
+    "pasterSetID": "pasterSet_QLTJ",
+    "pasterSetName": "强烈推荐",
+    "pasterSetfileName": "",
+    "pasterSetUrl": "http://",
+    "localPath": "",
+    "pasterModelArray": [
+        {
+             "pasterID": "1fb03fe96cc2b90a7fd029af43db8c81",
+             "pasterName": "美食",
+             "pasterFileName": "1fb03fe96cc2b90a7fd029af43db8c81",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+        },
+        {
+             "pasterID": "4dd7d1d33a7886ef3514ab2c23beb706",
+             "pasterName": "支出记录",
+             "pasterFileName": "4dd7d1d33a7886ef3514ab2c23beb706",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         },
+         {
+             "pasterID": "8a31f04989fc525c19a0fb8da84cbcee",
+             "pasterName": "购物",
+             "pasterFileName": "8a31f04989fc525c19a0fb8da84cbcee",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         },
+         {
+             "pasterID": "8bb2599f87f9dc423490a9d70f0edbc1",
+             "pasterName": "月月",
+             "pasterFileName": "8bb2599f87f9dc423490a9d70f0edbc1",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         },
+         {
+             "pasterID": "8e741e545fc9d9e7a9fa4f1bccad4d65",
+             "pasterName": "生日快乐",
+             "pasterFileName": "8e741e545fc9d9e7a9fa4f1bccad4d65",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         },
+         {
+             "pasterID": "39fca47cde6f2b3d5b1f18e84c28d366",
+             "pasterName": "日期",
+             "pasterFileName": "39fca47cde6f2b3d5b1f18e84c28d366",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         },
+         {
+             "pasterID": "889ff1a3f850d9f0c82f8b40d33c8dde",
+             "pasterName": "体重",
+             "pasterFileName": "889ff1a3f850d9f0c82f8b40d33c8dde",
+             "pasterImageUrl": "",
+             "localImagePath": ""
+         }
+    ]
+}

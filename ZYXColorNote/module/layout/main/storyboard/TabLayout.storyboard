@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root Navigation View Controller-->
+        <scene sceneID="fbJ-sA-2oy">
+            <objects>
+                <navigationController storyboardIdentifier="TabBarNVC_SBID" id="DYw-iS-JLw" customClass="GWRootNavigationViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e86-40-h2o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tF2-gu-mnx" kind="relationship" relationship="rootViewController" id="kqd-Ny-FpQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CmC-Aw-PqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="429" y="306"/>
+        </scene>
+        <!--布局-->
+        <scene sceneID="QhB-Cf-xym">
+            <objects>
+                <viewController storyboardIdentifier="LayoutViewController_SBID" title="布局" hidesBottomBarWhenPushed="YES" id="tF2-gu-mnx" customClass="LayoutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S4f-ad-Qtj">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" id="PdF-7s-3mL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="aQE-6f-NDd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="layout_top_handle_default_icon.PNG" id="TPe-VD-0Ia">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wYg-8A-PUe">
+                                                <rect key="frame" x="10" y="10" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="backBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="2Uz-TP-oOj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dLc-Pa-nHY">
+                                                <rect key="frame" x="310" y="8" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="saveBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="7R2-Gb-ilH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="Yp1-Ot-b1N">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layout_top_handle_ranks_icon.PNG" id="leH-Wn-GoN">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yPL-mN-URc">
+                                                <rect key="frame" x="10" y="10" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="backBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="bdf-fo-ZZH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dws-J8-vfx">
+                                                <rect key="frame" x="310" y="8" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="saveBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="jJN-oj-fhJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GcM-X3-5a5">
+                                                <rect key="frame" x="75" y="2" width="46" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="elementLayerTopBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="DSq-4o-Bmi"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OFf-dH-hFg">
+                                                <rect key="frame" x="137" y="2" width="46" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="elementLayerUpBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="Ifm-ZI-MXm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YCg-kF-jpm">
+                                                <rect key="frame" x="197" y="1" width="46" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="elementLayerDownBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="rAg-fG-FYR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="89b-Xy-TH5">
+                                                <rect key="frame" x="251" y="0.0" width="46" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="elementLayerBottomBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="nFj-gl-kLU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="zr7-qE-04t">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layout_top_handle_stroke_icon.PNG" id="m7V-qI-HBp">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IuD-Ed-1pl">
+                                                <rect key="frame" x="10" y="10" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="backBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="owj-Qr-czM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sCY-9X-Uku">
+                                                <rect key="frame" x="310" y="8" width="57" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="saveBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="OCk-ey-ILv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ezE-i6-mYq">
+                                                <rect key="frame" x="120" y="0.0" width="55" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="strokeRevokeBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="LtE-b3-ted"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NHg-F1-xfO">
+                                                <rect key="frame" x="196" y="0.0" width="55" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="strokeRecoveryBtnClicked:" destination="tF2-gu-mnx" eventType="touchUpInside" id="4BK-sX-85m"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="g4A-Yg-MdT">
+                                <rect key="frame" x="0.0" y="45" width="375" height="505"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" id="sLU-dO-svh" customClass="GWLayoutScorllView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.99318426724137931" green="0.95083512931034486" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="tF2-gu-mnx" id="Opn-b2-43q"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="fcV-pT-Czf">
+                                <rect key="frame" x="0.0" y="550" width="375" height="53"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="lB0-Fj-mxV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pxk-GD-XHL">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="模板" image="mod_control_template_normal.png">
+                                                    <color key="titleColor" red="0.45979249477386475" green="0.23242488503456116" blue="0.27576163411140442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_template_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertTemplate:" destination="tF2-gu-mnx" eventType="touchUpInside" id="MPM-sc-fr0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KcE-hp-K5K">
+                                                <rect key="frame" x="60" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="背景" image="mod_control_style_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_style_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertBackground:" destination="tF2-gu-mnx" eventType="touchUpInside" id="sOU-oZ-mh3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9YY-1H-eMf">
+                                                <rect key="frame" x="120" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="贴纸" image="mod_control_paster_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_paster_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertPaster:" destination="tF2-gu-mnx" eventType="touchUpInside" id="nrx-tR-IaJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tf6-Nu-VzP">
+                                                <rect key="frame" x="180" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="文本" image="mod_control_text_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_text_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertViewElementText:" destination="tF2-gu-mnx" eventType="touchUpInside" id="Aba-BV-Oh6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0qG-Sj-QNd">
+                                                <rect key="frame" x="240" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="笔画" image="mod_control_lace_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_lace_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertStroke:" destination="tF2-gu-mnx" eventType="touchUpInside" id="zut-tm-Axs"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VPN-1w-ZUz">
+                                                <rect key="frame" x="300" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="图片" image="mod_control_photo_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="mod_control_photo_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="insertViewElementImage:" destination="tF2-gu-mnx" eventType="touchUpInside" id="qZq-tK-6J1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PSl-BU-00l">
+                                                <rect key="frame" x="360" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="加纸" image="mod_control_paperinc_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="disabled" image="mod_control_paperinc_disabled.png"/>
+                                                <state key="selected" image="mod_control_paperinc_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPaper:" destination="tF2-gu-mnx" eventType="touchUpInside" id="jGs-Pe-RIZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IJx-xm-wSS">
+                                                <rect key="frame" x="420" y="0.0" width="50" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="titleEdgeInsets" minX="-34" minY="36" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="-14" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="减纸" image="mod_control_paperdec_normal.png">
+                                                    <color key="titleColor" red="0.45979249480000001" green="0.232424885" blue="0.27576163409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="disabled" image="mod_control_paperdec_disabled.png"/>
+                                                <state key="selected" image="mod_control_paperdec_select.png">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="reducePaper:" destination="tF2-gu-mnx" eventType="touchUpInside" id="2hg-Ew-eyE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </scrollView>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="布局" id="Wst-NZ-i6i"/>
+                    <connections>
+                        <outlet property="addPaper" destination="PSl-BU-00l" id="b5h-xa-Vlm"/>
+                        <outlet property="bottomView" destination="fcV-pT-Czf" id="YSu-Ef-0uI"/>
+                        <outlet property="insertStroke" destination="0qG-Sj-QNd" id="b8f-Hs-9PO"/>
+                        <outlet property="insertViewElementImage" destination="VPN-1w-ZUz" id="O8I-d8-1rC"/>
+                        <outlet property="insertViewElementText" destination="tf6-Nu-VzP" id="hJv-2v-aJE"/>
+                        <outlet property="layoutContentView" destination="g4A-Yg-MdT" id="Jjh-Jz-e1Z"/>
+                        <outlet property="layoutScrollView" destination="sLU-dO-svh" id="qP4-wU-MsN"/>
+                        <outlet property="reducePaper" destination="IJx-xm-wSS" id="yyp-ff-b0T"/>
+                        <outlet property="scrollView" destination="lB0-Fj-mxV" id="BzO-5Q-RFR"/>
+                        <outlet property="topHandleDefaultView" destination="aQE-6f-NDd" id="UfX-j7-6cB"/>
+                        <outlet property="topHandleRanksView" destination="Yp1-Ot-b1N" id="Sqw-mM-UPL"/>
+                        <outlet property="topHandleStrokeView" destination="zr7-qE-04t" id="wr0-Bg-qao"/>
+                        <outlet property="topView" destination="PdF-7s-3mL" id="EKF-Cn-fPl"/>
+                        <segue destination="gQm-0T-lat" kind="modal" id="bRH-yP-dX6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRI-tX-m5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930.5" y="305.5"/>
+        </scene>
+        <!--Root Navigation View Controller-->
+        <scene sceneID="CyE-E9-1qm">
+            <objects>
+                <navigationController storyboardIdentifier="LayoutInputTextViewController_SBID" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="gQm-0T-lat" customClass="GWRootNavigationViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X5I-yI-aMA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YTy-qB-fGR" kind="relationship" relationship="rootViewController" id="Dhd-0T-4a6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auD-wf-KQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="306"/>
+        </scene>
+        <!--输入文字-->
+        <scene sceneID="qMT-6Z-h9B">
+            <objects>
+                <viewController title="输入文字" hidesBottomBarWhenPushed="YES" id="YTy-qB-fGR" customClass="LayoutInputTextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nSk-IV-h2m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" id="H7T-uh-LiF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="WSj-wm-pew">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文字内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AKq-19-Onp">
+                                                <rect key="frame" x="19" y="19" width="79" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hyq-n9-6bN">
+                                                <rect key="frame" x="321" y="15" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="完成">
+                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="completeBtnClicked:" destination="YTy-qB-fGR" eventType="touchUpInside" id="hN2-CY-78y"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="krT-UJ-sYz">
+                                        <rect key="frame" x="15" y="60" width="345" height="185"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                                <color key="value" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="YTy-qB-fGR" id="2ia-JA-H1r"/>
+                                        </connections>
+                                    </textView>
+                                    <view contentMode="scaleToFill" id="k2h-64-gFK">
+                                        <rect key="frame" x="25" y="65" width="160" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写下这一刻你的想法...... " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDK-8A-RwM">
+                                                <rect key="frame" x="0.0" y="5" width="146" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="字数500字以内" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gv9-Mz-uuX">
+                                                <rect key="frame" x="0.0" y="30" width="145" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="piQ-vl-c6N">
+                                <rect key="frame" x="0.0" y="615" width="375" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="text_color_select.PNG" id="7Lr-kR-BJG">
+                                        <rect key="frame" x="0.0" y="0.0" width="107" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GuZ-vm-rsB">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="colorBtnClicked:" destination="YTy-qB-fGR" eventType="touchUpInside" id="VWD-1e-1nv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KyM-Ea-Z9c">
+                                        <rect key="frame" x="52" y="0.0" width="52" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="fontBtnClicked:" destination="YTy-qB-fGR" eventType="touchUpInside" id="5O3-02-vqK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="52x-eG-Vp3"/>
+                    <connections>
+                        <outlet property="bottomView" destination="piQ-vl-c6N" id="8XL-jR-pD1"/>
+                        <outlet property="textView" destination="krT-UJ-sYz" id="Taj-f7-AK7"/>
+                        <outlet property="tipView" destination="k2h-64-gFK" id="sij-DG-8IY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iH-CY-frr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950" y="306"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="layout_top_handle_default_icon.PNG" width="750" height="90"/>
+        <image name="layout_top_handle_ranks_icon.PNG" width="750" height="91"/>
+        <image name="layout_top_handle_stroke_icon.PNG" width="750" height="86"/>
+        <image name="mod_control_lace_normal.png" width="32" height="32"/>
+        <image name="mod_control_lace_select.png" width="32" height="32"/>
+        <image name="mod_control_paperdec_disabled.png" width="32" height="32"/>
+        <image name="mod_control_paperdec_normal.png" width="32" height="32"/>
+        <image name="mod_control_paperdec_select.png" width="32" height="32"/>
+        <image name="mod_control_paperinc_disabled.png" width="32" height="32"/>
+        <image name="mod_control_paperinc_normal.png" width="32" height="32"/>
+        <image name="mod_control_paperinc_select.png" width="32" height="32"/>
+        <image name="mod_control_paster_normal.png" width="32" height="32"/>
+        <image name="mod_control_paster_select.png" width="32" height="32"/>
+        <image name="mod_control_photo_normal.png" width="32" height="32"/>
+        <image name="mod_control_photo_select.png" width="32" height="32"/>
+        <image name="mod_control_style_normal.png" width="32" height="32"/>
+        <image name="mod_control_style_select.png" width="32" height="32"/>
+        <image name="mod_control_template_normal.png" width="32" height="32"/>
+        <image name="mod_control_template_select.png" width="32" height="32"/>
+        <image name="mod_control_text_normal.png" width="32" height="32"/>
+        <image name="mod_control_text_select.png" width="32" height="32"/>
+        <image name="text_color_select.PNG" width="214" height="90"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>
