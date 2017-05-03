@@ -56,12 +56,7 @@
     if(backgroundImage == nil){
         return;
     }
-    CGFloat height=0;
-    if([self.superview isKindOfClass:[UIScrollView class]]){
-        height = [(UIScrollView*)self.superview contentSize].height;
-    }else{
-        height = self.superview.bounds.size.height;
-    }
+    CGFloat height = (self.superview.bounds.size.width/backgroundImage.size.width)*backgroundImage.size.height;
     self.backgroundImageView.height = height;
 }
 -(UIImage *)backgroundImage{

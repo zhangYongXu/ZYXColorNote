@@ -1,5 +1,5 @@
 //
-//  YXLine.h
+//  GWPathLine.h
 //  Test
 //
 //  Created by BZBY on 15/4/1.
