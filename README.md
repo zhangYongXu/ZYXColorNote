@@ -6,4 +6,6 @@ iOS模仿color多彩手杖的布局实现，视图旋转放大，笔刷等
 3，最终生成一张高分辨率图片，和整个布局信息的json数据文件。效果和color多彩手杖类似。
 
 效果图1：
-![iamge](http://)
+![iamge](https://github.com/zhangYongXu/ZYXColorNote/blob/master/Untitled.gif)
+效果图2：
+![iamge](https://github.com/zhangYongXu/ZYXColorNote/blob/master/Untitled2.gif)
