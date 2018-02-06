@@ -23,7 +23,7 @@
 }
 -(void)refreshUI{
     NSURL * url = [NSURL URLWithString:self.model.showImageUrl];
-    [self.imageView setImageWithURL:url];
+    [self.imageView sd_setImageWithURL:url];
 }
 -(void)setCellWithModel:(id)model{
     self.model = model;

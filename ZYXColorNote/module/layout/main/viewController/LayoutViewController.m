@@ -142,10 +142,21 @@
             NSString * fileUrl = file.url;
             NSString * imageUrl = imageFile.url;
             
+            NSString * userObjectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
             NSDictionary * parameters = @{@"layoutJsonDataString":@"",@"layoutPicImageUrl":imageUrl,@"layouJsonUrl":fileUrl};
-            
-            [YXNetWork postSystemHttp:@"InsertLayoutJson" parameters:parameters showProgress:YES sucess:^(id responseObj) {
+            BmobHttpApiAddItem * item = [[BmobHttpApiAddItem alloc] init];
+            item.tableName = @"LayoutModel";
+            item.dataDict = parameters;
+            BmobHttpApiAddItemPoint * point = [[BmobHttpApiAddItemPoint alloc] init];
+            point.pointFeildName = @"publishUserPoint";
+            point.tableName = @"LayoutUserModel";
+            point.objectId = userObjectId;
+            item.pointArray = @[point];
+            [BmobHttpApiPost addDataWithBmobHttpApiAddItem:item showProgress:NO sucess:^(NSDictionary *dictionary) {
                 [self.progressViewMask dismissProgressView];
+                [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                self.navigationController.tabBarController.selectedIndex = 0;
+                [self.navigationController popViewControllerAnimated:YES];
             } failed:^(NSString *errorMsg) {
                 [self.progressViewMask dismissProgressView];
             }];
@@ -179,7 +190,7 @@
     self.layoutScrollView.contentSize = CGSizeMake(self.layoutScrollView.width, SingleScreenHeight);
     [self.bottomView drawBorderSolidLineWithPosition:BorderLinePositionTop Color:[UIColor colorWithHex:AppViewBottomLineColor] Width:AppViewBottomLineWidth];
     self.scrollView.contentSize = CGSizeMake(470, self.scrollView.height);
-    [self.layoutScrollView addTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
+    [self.layoutScrollView addSingleTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
         self.currentFocusedElementView.isFocusing = NO;
         if(!self.topHandleRanksView.hidden){
             [self showTopHandleDefaultView];
@@ -416,6 +427,10 @@
     
 }
 - (IBAction)saveBtnClicked:(id)sender {
+    if(!APPDelegate.isUserHasLogin){
+        [SVProgressHUD showErrorWithStatus:@"请先登录"];
+        return;
+    }
     UIAlertView * alertView = [UIAlertView alertViewWithTitle:@"确认发布？" message:nil cancelButtonTitle:@"确认" handleBlock:^{
         [self refreshLayoutModelData];
         [self uploadDataToServer];

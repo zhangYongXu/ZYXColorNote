@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void(^ITTViewSingleTapGetureBlock)(UITapGestureRecognizer * tapGeture);
+typedef void(^ITTViewDoubleTapGetureBlock)(UITapGestureRecognizer * tapGeture);
 typedef void(^ITTViewUnvisibleButtonBlock)(UIButton * button);
 
 typedef NS_ENUM(NSInteger,BorderLinePositions) {
@@ -154,9 +155,10 @@ typedef NS_ENUM(NSInteger,BorderLinePositions) {
 /*
  
  */
--(void)addTapGetureWithBlock:(ITTViewSingleTapGetureBlock)singleTapGetureBlock;
--(void)addUnvisibleButtonWithFrame:(CGRect)frame UnvisibleButtonBlock:(ITTViewUnvisibleButtonBlock)unvisibleButtonBlock;
 
+-(void)addSingleTapGetureWithBlock:(ITTViewSingleTapGetureBlock)singleTapGetureBlock;
+-(void)addDoubleTapGetureWithBlock:(ITTViewSingleTapGetureBlock)doubleTapGetureBlock;
+-(void)addUnvisibleButtonWithFrame:(CGRect)frame UnvisibleButtonBlock:(ITTViewUnvisibleButtonBlock)unvisibleButtonBlock;
 
 
 - (void)startRotationWithDuration:(CGFloat)duration;
@@ -206,6 +208,7 @@ typedef NS_ENUM(NSInteger,BorderLinePositions) {
 @end
 @interface ITTViewManager : NSObject
 @property (copy,nonatomic) ITTViewSingleTapGetureBlock singleTapGetureBlock;
+@property (copy,nonatomic) ITTViewDoubleTapGetureBlock doubleTapGetureBlock;
 @property (copy,nonatomic) ITTViewUnvisibleButtonBlock unvisibleButtonBlock;
 
 @property(strong,nonatomic) NSMutableDictionary * borderLineLayerDict;

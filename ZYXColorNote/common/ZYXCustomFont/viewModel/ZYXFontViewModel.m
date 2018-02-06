@@ -62,6 +62,7 @@ static ZYXFontViewModel * shareIntance = nil;
  */
 -(void)requestAllCustomFontDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock{
     
+    /*
     NSString * urlStr = @"GetAllCustomFontData";
     [YXNetWork postSystemHttp:urlStr showProgress:NO sucess:^(id responseObj) {
         NSArray * array = responseObj[@"allCustomFontsData"];
@@ -74,6 +75,22 @@ static ZYXFontViewModel * shareIntance = nil;
             successBlokc(responseObj);
         }
         
+    } failed:^(NSString *errorMsg) {
+        if(faildBlock){
+            faildBlock(errorMsg);
+        }
+    }];
+     */
+    NSString * bql = @"select * from ZYXCustomFontModel";
+    [BmobHttpApiGet getDataWithBql:bql showProgress:NO sucess:^(NSArray *array) {
+        self.modelArray = [ZYXFontModel modelArrayFromDictArray:array];
+        for(ZYXFontModel * model in self.modelArray){
+            self.fontModelDict[model.fontID] = model;
+        }
+        
+        if(successBlokc){
+            successBlokc(array);
+        }
     } failed:^(NSString *errorMsg) {
         if(faildBlock){
             faildBlock(errorMsg);

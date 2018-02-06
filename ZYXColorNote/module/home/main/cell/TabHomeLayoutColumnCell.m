@@ -11,6 +11,7 @@
 @interface TabHomeLayoutColumnCell()
 @property (strong,nonatomic) GWLayoutNetDataModel * model;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @end
 @implementation TabHomeLayoutColumnCell
@@ -18,12 +19,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
+-(void)initUI{
+    self.isShowSelectBtn = NO;
+}
+-(void)setIsShowSelectBtn:(BOOL)isShowSelectBtn{
+    _isShowSelectBtn = isShowSelectBtn;
+    self.selectBtn.hidden = !_isShowSelectBtn;
+}
 -(void)refreshUI{
     NSURL * url = [NSURL URLWithString:self.model.layoutPicImageUrl];
-    [self.imageView setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView sd_setImageWithURL:url completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         CGFloat height = (self.imageView.width/image.size.width)*image.size.height;
         self.imageView.height = height;
     }];
+    
+    self.selectBtn.selected = self.model.isSelected;
+}
+- (IBAction)selectBtnClicked:(id)sender {
 }
 -(void)setCellWithModel:(id)model{
     self.model = model;

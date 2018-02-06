@@ -9,5 +9,5 @@
 
 
 @interface TabHomeLayoutColumnCell : GWRootCollectionViewCell
-
+@property(assign,nonatomic) BOOL isShowSelectBtn;
 @end

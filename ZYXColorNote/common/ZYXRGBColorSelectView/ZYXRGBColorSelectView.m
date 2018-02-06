@@ -33,7 +33,7 @@ static ZYXRGBColorSelectView * shareIntance = nil;
     self.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
     self.frame = [[UIScreen mainScreen] bounds];
     
-    [self.customBackgroundView addTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
+    [self.customBackgroundView addSingleTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
         [self closeView];
     }];
     

@@ -50,22 +50,42 @@
  *  @param faildBlock   失败回调
  */
 -(void)requestAllLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock{
-    
-    NSString * urlStr = @"SelectAllLayoutData";
-    [YXNetWork postSystemHttp:urlStr showProgress:YES sucess:^(id responseObj) {
-        NSArray * array = responseObj[@"allLayoutModelsResults"];
+    NSString * bql = @"select * from LayoutModel";
+    [BmobHttpApiGet getDataWithBql:bql showProgress:YES sucess:^(NSArray *array) {
+        NSLog(@"requestAllLayoutDataWithSuccessBlock array:%@",array);
         self.netLaoutDataArray = [GWLayoutNetDataModel modelArrayFromDictArray:array];
-
         if(successBlokc){
-            successBlokc(responseObj);
+            successBlokc(array);
         }
-        
     } failed:^(NSString *errorMsg) {
         if(faildBlock){
             faildBlock(errorMsg);
         }
     }];
 }
+
+/**
+ *  请求所有布局模板 查询我的布局
+ *
+ *  @param successBlokc 成功回调
+ *  @param faildBlock   失败回调
+ */
+-(void)requestMineLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock{
+    NSString * objectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
+    NSString * bql = [NSString stringWithFormat:@"select include publishUserPoint, * from LayoutModel where publishUserPoint = pointer('LayoutUserModel', '%@')",objectId];
+    [BmobHttpApiGet getDataWithBql:bql showProgress:YES sucess:^(NSArray *array) {
+        NSLog(@"requestMineLayoutDataWithSuccessBlock array:%@",array);
+        self.netLaoutDataArray = [GWLayoutNetDataModel modelArrayFromDictArray:array];
+        if(successBlokc){
+            successBlokc(array);
+        }
+    } failed:^(NSString *errorMsg) {
+        if(faildBlock){
+            faildBlock(errorMsg);
+        }
+    }];
+}
+
 /**
  *  请求网络布局模板文件
  *

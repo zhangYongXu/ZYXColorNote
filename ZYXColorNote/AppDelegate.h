@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UserViewModel.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong,nonatomic) UserViewModel * userViewModel;
+@property (assign,nonatomic,readonly) BOOL isUserHasLogin;//用户是否已登录
 
 @property (copy,nonatomic) NSString * documentDir;
 @property (copy,nonatomic) NSString * draftDir;

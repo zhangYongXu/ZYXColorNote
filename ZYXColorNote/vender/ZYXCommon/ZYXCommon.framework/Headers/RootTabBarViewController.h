@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "RootModel.h"
-
+@class RootTabBarConfigModel;
 @interface RootTabBarViewController : UITabBarController
 @property (nonatomic,strong) UIColor * tabBarBackgroundColor;
 @property (nonatomic,strong) UIColor * tabBarTitleNormalColor;
 @property (nonatomic,strong) UIColor * tabBarTitleSelectedColor;
+
+@property (strong,nonatomic,readonly) NSMutableArray<RootTabBarConfigModel*> * configModelArray;
+
 #pragma mark 根据tabBar配置文件创建控制器
 /**
  *  根据配置文件加载TabBar上各模块sb文件
@@ -30,4 +33,5 @@
 @property (copy,nonatomic) NSString *VC_Title;
 @property (copy,nonatomic) NSString *VC_ImageName;
 @property (copy,nonatomic) NSString *VC_SelectedImageName;
+@property (strong,nonatomic,readonly) UIStoryboard * storyboard;
 @end

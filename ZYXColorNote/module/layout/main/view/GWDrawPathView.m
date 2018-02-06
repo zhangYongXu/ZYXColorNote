@@ -134,7 +134,8 @@
 
 -(void)initUI{
     __weak typeof(self) weakSelf  = self;
-    [self addTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
+
+    [self addSingleTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
         [weakSelf singleTapGetureHandle:tapGeture];
     }];
     

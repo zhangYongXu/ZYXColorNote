@@ -96,7 +96,7 @@
         GWLayoutModel * layoutModel = [[GWLayoutModel alloc] init];
         [layoutModel setValuesForKeysWithDictionary:dict];
         
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TabHome" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TabLayout" bundle:nil];
         LayoutViewController * lvc = [storyboard instantiateViewControllerWithIdentifier:@"LayoutViewController_SBID"];
         lvc.existLayoutModel = layoutModel;
         [self.navigationController pushViewController:lvc animated:YES];

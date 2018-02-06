@@ -9,9 +9,11 @@
 #import "GWRootModel.h"
 
 @interface GWLayoutNetDataModel : GWRootModel
+@property(copy,nonatomic)NSString* objectId;
 @property(copy,nonatomic)NSString * layoutJsonFileLocalPath;
 @property(assign,nonatomic) BOOL isExistlayoutJsonLocalFile;
 
 @property(copy,nonatomic)NSString* layoutPicImageUrl;
 @property(copy,nonatomic)NSString* layouJsonUrl;
+@property(assign,nonatomic) BOOL isSelected;
 @end

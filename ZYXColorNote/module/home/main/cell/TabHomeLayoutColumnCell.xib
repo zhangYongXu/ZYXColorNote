@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,6 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="193" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lf8-cT-Ptb">
+                        <rect key="frame" x="154" y="202" width="39" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <state key="normal" image="未选中状态.png"/>
+                        <state key="selected" image="选中状态.png"/>
+                        <connections>
+                            <action selector="selectBtnClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qx6-0V-0XV"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <size key="customSize" width="193" height="235"/>
@@ -39,13 +48,13 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="imageView" destination="r1K-2Y-LPZ" id="LNn-Gn-asY"/>
+                <outlet property="selectBtn" destination="lf8-cT-Ptb" id="kfZ-F3-eUc"/>
             </connections>
             <point key="canvasLocation" x="96.5" y="144"/>
         </collectionViewCell>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
+    <resources>
+        <image name="未选中状态.png" width="20" height="20"/>
+        <image name="选中状态.png" width="20" height="20"/>
+    </resources>
 </document>

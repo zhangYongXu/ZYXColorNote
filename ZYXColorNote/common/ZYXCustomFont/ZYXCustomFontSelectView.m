@@ -40,7 +40,7 @@ static ZYXCustomFontSelectView * shareIntance = nil;
     
     [self.collectionView registerNib:[ZYXFontSelectCell cellNib] forCellWithReuseIdentifier:[ZYXFontSelectCell reuseIdentifier]];
     
-    [self.customBackgroundView addTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
+    [self.customBackgroundView addSingleTapGetureWithBlock:^(UITapGestureRecognizer *tapGeture) {
         [self closeView];
     }];
 }

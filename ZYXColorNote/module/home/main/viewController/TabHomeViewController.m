@@ -112,7 +112,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    GWLayoutModel * model  = self.dataArray[indexPath.item];
+    GWLayoutNetDataModel * model  = self.dataArray[indexPath.item];
     
     [self performSegueWithIdentifier:@"TabHomeToShowImageLayoutSegue" sender:model];
 

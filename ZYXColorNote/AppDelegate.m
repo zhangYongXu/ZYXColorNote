@@ -13,6 +13,15 @@
 @end
 
 @implementation AppDelegate
+-(UserViewModel *)userViewModel{
+    if(nil == _userViewModel){
+        _userViewModel = [[UserViewModel alloc] init];
+    }
+    return _userViewModel;
+}
+-(BOOL)isUserHasLogin{
+    return self.userViewModel.userLoginState == UserViewModelLoginStatesLogin;
+}
 -(NSString *)documentDir{
     if(STR_IS_NIL(_documentDir)){
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

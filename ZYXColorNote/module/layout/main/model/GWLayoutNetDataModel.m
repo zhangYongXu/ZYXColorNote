@@ -9,6 +9,15 @@
 #import "GWLayoutNetDataModel.h"
 
 @implementation GWLayoutNetDataModel
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.isSelected = NO;
+    }
+    return self;
+}
+
 -(NSString *)layoutJsonFileLocalPath{
     if(!STR_IS_NIL(self.layouJsonUrl)){
         NSString * fileName = [NSString stringWithFormat:@"%@.file",[self.layouJsonUrl md5]];

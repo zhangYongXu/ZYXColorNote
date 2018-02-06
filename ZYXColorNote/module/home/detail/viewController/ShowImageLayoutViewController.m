@@ -61,7 +61,7 @@
     [self refreshUI];
     
     NSURL * url = [NSURL URLWithString:self.layoutNetDataModel.layoutPicImageUrl];
-    [self.imageView setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView sd_setImageWithURL:url completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         CGFloat height = (self.imageView.width/image.size.width)*image.size.height;
         self.imageView.height = height;
         self.scrollView.contentSize = CGSizeMake(self.imageView.width, self.imageView.height);

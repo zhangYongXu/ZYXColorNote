@@ -11,6 +11,14 @@
 typedef void(^RightItemBtnHandleBlock)(UIButton * button);
 
 @interface RootViewController : UIViewController
+
+
+@property (strong,nonatomic) UIView * rightItemView;
+
+@property (strong,nonatomic) NSMutableArray * rightItmeBtnArray;
+@property (strong,nonatomic) NSMutableArray * rightItmeBtnRedDotViewArray;
+@property (strong,nonatomic) NSMutableArray * rightItmeHandleBlockArray;
+
 /**
  *  初始化方法
  *

@@ -26,6 +26,14 @@
 -(void)requestAllLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock;
 
 /**
+ *  请求所有布局模板 查询我的布局
+ *
+ *  @param successBlokc 成功回调
+ *  @param faildBlock   失败回调
+ */
+-(void)requestMineLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock;
+
+/**
  *  请求网络布局模板文件
  *
  *  @param successBlokc 成功回调
