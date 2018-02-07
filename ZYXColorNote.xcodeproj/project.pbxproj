@@ -521,6 +521,7 @@
 		F1C0CC022029A5F600510CF3 /* YXDateSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0CC002029A5F600510CF3 /* YXDateSelectView.xib */; };
 		F1C0CC052029AC5900510CF3 /* BmobHttpApiPut.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0CC042029AC5900510CF3 /* BmobHttpApiPut.m */; };
 		F1C4973D202AA46600A2EBF0 /* BmobHttpApiFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4973C202AA46600A2EBF0 /* BmobHttpApiFile.m */; };
+		F1C49741202AE81000A2EBF0 /* luanchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C49740202AE81000A2EBF0 /* luanchImage.png */; };
 		F1D2C0C12027FCD6001BB006 /* BmobHttpSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0B52027FCD6001BB006 /* BmobHttpSessionManager.m */; };
 		F1D2C0C22027FCD6001BB006 /* BmobNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0B72027FCD6001BB006 /* BmobNetWork.m */; };
 		F1D2C0C32027FCD6001BB006 /* BmobRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0BA2027FCD6001BB006 /* BmobRequestOperationManager.m */; };
@@ -1470,6 +1471,7 @@
 		F1C0CC042029AC5900510CF3 /* BmobHttpApiPut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BmobHttpApiPut.m; sourceTree = "<group>"; };
 		F1C4973B202AA46600A2EBF0 /* BmobHttpApiFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BmobHttpApiFile.h; sourceTree = "<group>"; };
 		F1C4973C202AA46600A2EBF0 /* BmobHttpApiFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BmobHttpApiFile.m; sourceTree = "<group>"; };
+		F1C49740202AE81000A2EBF0 /* luanchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luanchImage.png; sourceTree = "<group>"; };
 		F1D2C0B42027FCD6001BB006 /* BmobHttpSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobHttpSessionManager.h; sourceTree = "<group>"; };
 		F1D2C0B52027FCD6001BB006 /* BmobHttpSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BmobHttpSessionManager.m; sourceTree = "<group>"; };
 		F1D2C0B62027FCD6001BB006 /* BmobNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobNetWork.h; sourceTree = "<group>"; };
@@ -1662,6 +1664,7 @@
 				F19D8E8B1E9F543F00520A9A /* AppDelegate.m */,
 				F19D8E931E9F543F00520A9A /* Assets.xcassets */,
 				F19D8E951E9F543F00520A9A /* LaunchScreen.storyboard */,
+				F1C49740202AE81000A2EBF0 /* luanchImage.png */,
 				F19D8E981E9F543F00520A9A /* Info.plist */,
 				F19D8E871E9F543F00520A9A /* Supporting Files */,
 			);
@@ -3988,6 +3991,7 @@
 				F19D98781E9F68EE00520A9A /* zyx_image_good_frame_bottom_handle_icon.PNG in Resources */,
 				F19D95FD1E9F68ED00520A9A /* staricon_0@2x.png in Resources */,
 				F19D98251E9F68EE00520A9A /* event_test_icon.jpg in Resources */,
+				F1C49741202AE81000A2EBF0 /* luanchImage.png in Resources */,
 				F1BA47B1202855D700897DBB /* 未选中状态@2x.png in Resources */,
 				F19D98791E9F68EE00520A9A /* zyx_image_simple_frame_bottom_handle_icon.PNG in Resources */,
 				F19D9A681E9F695000520A9A /* TabHomeLayoutColumnCell.xib in Resources */,
