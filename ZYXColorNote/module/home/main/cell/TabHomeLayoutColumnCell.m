@@ -25,10 +25,15 @@
 }
 -(void)initUI{
     self.isShowSelectBtn = NO;
+    self.isShowUserInfoView = NO;
 }
 -(void)setIsShowSelectBtn:(BOOL)isShowSelectBtn{
     _isShowSelectBtn = isShowSelectBtn;
     self.selectBtn.hidden = !_isShowSelectBtn;
+}
+-(void)setIsShowUserInfoView:(BOOL)isShowUserInfoView{
+    _isShowUserInfoView = isShowUserInfoView;
+    self.userView.hidden = !_isShowUserInfoView;
 }
 -(void)refreshUI{
     NSURL * url = [NSURL URLWithString:self.model.layoutPicImageUrl];
@@ -37,7 +42,6 @@
         self.imageView.height = height;
     }];
     
-    self.userView.hidden =  (nil == self.model.publishUserPoint);
     if(nil != self.model.publishUserPoint){
         url = [NSURL URLWithString:self.model.publishUserPoint.img_url];
         [self.headerImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"头像"]];

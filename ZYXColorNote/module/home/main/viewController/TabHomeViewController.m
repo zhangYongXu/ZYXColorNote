@@ -86,6 +86,7 @@
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TabHomeLayoutColumnCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:[TabHomeLayoutColumnCell reuseIdentifier] forIndexPath:indexPath];
+    cell.isShowUserInfoView = YES;
     GWLayoutNetDataModel * model  = self.dataArray[indexPath.item];
     [cell setCellWithModel:model];
     return cell;

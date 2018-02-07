@@ -10,4 +10,5 @@
 
 @interface TabHomeLayoutColumnCell : GWRootCollectionViewCell
 @property(assign,nonatomic) BOOL isShowSelectBtn;
+@property(assign,nonatomic) BOOL isShowUserInfoView;
 @end

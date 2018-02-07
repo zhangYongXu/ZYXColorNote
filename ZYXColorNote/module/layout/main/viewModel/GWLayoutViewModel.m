@@ -72,7 +72,7 @@
  */
 -(void)requestMineLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock{
     NSString * objectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
-    NSString * bql = [NSString stringWithFormat:@"select include publishUserPoint, * from LayoutModel where publishUserPoint = pointer('LayoutUserModel', '%@')",objectId];
+    NSString * bql = [NSString stringWithFormat:@"select * from LayoutModel where publishUserPoint = pointer('LayoutUserModel', '%@')",objectId];
     [BmobHttpApiGet getDataWithBql:bql showProgress:YES sucess:^(NSArray *array) {
         NSLog(@"requestMineLayoutDataWithSuccessBlock array:%@",array);
         self.netLaoutDataArray = [GWLayoutNetDataModel modelArrayFromDictArray:array];

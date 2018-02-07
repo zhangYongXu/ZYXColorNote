@@ -431,6 +431,7 @@
         [SVProgressHUD showErrorWithStatus:@"请先登录"];
         return;
     }
+    self.currentFocusedElementView.isFocusing = NO;
     UIAlertView * alertView = [UIAlertView alertViewWithTitle:@"确认发布？" message:nil cancelButtonTitle:@"确认" handleBlock:^{
         [self refreshLayoutModelData];
         [self uploadDataToServer];
