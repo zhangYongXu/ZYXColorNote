@@ -12,6 +12,10 @@
 @property (strong,nonatomic) GWLayoutNetDataModel * model;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+@property (weak, nonatomic) IBOutlet UIView *userView;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 @implementation TabHomeLayoutColumnCell
@@ -32,6 +36,14 @@
         CGFloat height = (self.imageView.width/image.size.width)*image.size.height;
         self.imageView.height = height;
     }];
+    
+    self.userView.hidden =  (nil == self.model.publishUserPoint);
+    if(nil != self.model.publishUserPoint){
+        url = [NSURL URLWithString:self.model.publishUserPoint.img_url];
+        [self.headerImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"头像"]];
+        self.nameLabel.text = self.model.publishUserPoint.nick_name;
+        self.dateLabel.text = self.model.createdAt;
+    }
     
     self.selectBtn.selected = self.model.isSelected;
 }

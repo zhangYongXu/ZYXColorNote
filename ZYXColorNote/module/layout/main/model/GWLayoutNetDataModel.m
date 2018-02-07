@@ -18,6 +18,15 @@
     return self;
 }
 
+-(void)setPublishUserPoint:(UserModel *)publishUserPoint{
+    if([publishUserPoint isKindOfClass:[NSDictionary class]]){
+        _publishUserPoint = [[UserModel alloc] init];
+        [_publishUserPoint setValuesForKeysWithDictionary:(NSDictionary*)publishUserPoint];
+    }else{
+        _publishUserPoint = publishUserPoint;
+    }
+}
+
 -(NSString *)layoutJsonFileLocalPath{
     if(!STR_IS_NIL(self.layouJsonUrl)){
         NSString * fileName = [NSString stringWithFormat:@"%@.file",[self.layouJsonUrl md5]];

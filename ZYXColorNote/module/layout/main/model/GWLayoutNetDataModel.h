@@ -7,6 +7,7 @@
 //
 
 #import "GWRootModel.h"
+#import "UserModel.h"
 
 @interface GWLayoutNetDataModel : GWRootModel
 @property(copy,nonatomic)NSString* objectId;
@@ -15,5 +16,8 @@
 
 @property(copy,nonatomic)NSString* layoutPicImageUrl;
 @property(copy,nonatomic)NSString* layouJsonUrl;
+
+@property(strong,nonatomic) UserModel * publishUserPoint;
+@property(copy,nonatomic)NSString* createdAt;
 @property(assign,nonatomic) BOOL isSelected;
 @end

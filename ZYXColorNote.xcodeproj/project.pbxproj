@@ -516,6 +516,11 @@
 		F1BA47B3202855D700897DBB /* 选中状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BA47AF202855D700897DBB /* 选中状态@2x.png */; };
 		F1BA47B4202855D700897DBB /* 选中状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BA47B0202855D700897DBB /* 选中状态@3x.png */; };
 		F1BA47B720285A1900897DBB /* BmobHttpApiDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BA47B620285A1900897DBB /* BmobHttpApiDelete.m */; };
+		F1C0CBFC2029A4C300510CF3 /* MineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0CBFB2029A4C300510CF3 /* MineInfoViewController.m */; };
+		F1C0CC012029A5F600510CF3 /* YXDateSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0CBFF2029A5F600510CF3 /* YXDateSelectView.m */; };
+		F1C0CC022029A5F600510CF3 /* YXDateSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C0CC002029A5F600510CF3 /* YXDateSelectView.xib */; };
+		F1C0CC052029AC5900510CF3 /* BmobHttpApiPut.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0CC042029AC5900510CF3 /* BmobHttpApiPut.m */; };
+		F1C4973D202AA46600A2EBF0 /* BmobHttpApiFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4973C202AA46600A2EBF0 /* BmobHttpApiFile.m */; };
 		F1D2C0C12027FCD6001BB006 /* BmobHttpSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0B52027FCD6001BB006 /* BmobHttpSessionManager.m */; };
 		F1D2C0C22027FCD6001BB006 /* BmobNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0B72027FCD6001BB006 /* BmobNetWork.m */; };
 		F1D2C0C32027FCD6001BB006 /* BmobRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D2C0BA2027FCD6001BB006 /* BmobRequestOperationManager.m */; };
@@ -1456,6 +1461,15 @@
 		F1BA47B0202855D700897DBB /* 选中状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中状态@3x.png"; sourceTree = "<group>"; };
 		F1BA47B520285A1900897DBB /* BmobHttpApiDelete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BmobHttpApiDelete.h; sourceTree = "<group>"; };
 		F1BA47B620285A1900897DBB /* BmobHttpApiDelete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BmobHttpApiDelete.m; sourceTree = "<group>"; };
+		F1C0CBFA2029A4C300510CF3 /* MineInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineInfoViewController.h; sourceTree = "<group>"; };
+		F1C0CBFB2029A4C300510CF3 /* MineInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineInfoViewController.m; sourceTree = "<group>"; };
+		F1C0CBFE2029A5F600510CF3 /* YXDateSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXDateSelectView.h; sourceTree = "<group>"; };
+		F1C0CBFF2029A5F600510CF3 /* YXDateSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXDateSelectView.m; sourceTree = "<group>"; };
+		F1C0CC002029A5F600510CF3 /* YXDateSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YXDateSelectView.xib; sourceTree = "<group>"; };
+		F1C0CC032029AC5900510CF3 /* BmobHttpApiPut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BmobHttpApiPut.h; sourceTree = "<group>"; };
+		F1C0CC042029AC5900510CF3 /* BmobHttpApiPut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BmobHttpApiPut.m; sourceTree = "<group>"; };
+		F1C4973B202AA46600A2EBF0 /* BmobHttpApiFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BmobHttpApiFile.h; sourceTree = "<group>"; };
+		F1C4973C202AA46600A2EBF0 /* BmobHttpApiFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BmobHttpApiFile.m; sourceTree = "<group>"; };
 		F1D2C0B42027FCD6001BB006 /* BmobHttpSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobHttpSessionManager.h; sourceTree = "<group>"; };
 		F1D2C0B52027FCD6001BB006 /* BmobHttpSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BmobHttpSessionManager.m; sourceTree = "<group>"; };
 		F1D2C0B62027FCD6001BB006 /* BmobNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BmobNetWork.h; sourceTree = "<group>"; };
@@ -1688,6 +1702,7 @@
 		F19D8EBC1E9F68EA00520A9A /* common */ = {
 			isa = PBXGroup;
 			children = (
+				F1C0CBFD2029A5F600510CF3 /* YXDateSelectView */,
 				F19D9B321E9F6F6E00520A9A /* GWLabel */,
 				F19D9AEE1E9F6ECD00520A9A /* ZYXCustomFont */,
 				F19D9AFC1E9F6ECD00520A9A /* ZYXRGBColorSelectView */,
@@ -2390,7 +2405,6 @@
 			children = (
 				F19D92EF1E9F68EB00520A9A /* cell */,
 				F19D92F01E9F68EB00520A9A /* model */,
-				F19D92F11E9F68EB00520A9A /* storyboard */,
 				F19D92F21E9F68EB00520A9A /* view */,
 				F19D92F31E9F68EB00520A9A /* viewController */,
 				F19D92F41E9F68EB00520A9A /* viewModel */,
@@ -2412,13 +2426,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		F19D92F11E9F68EB00520A9A /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
 		F19D92F21E9F68EB00520A9A /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2429,6 +2436,8 @@
 		F19D92F31E9F68EB00520A9A /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				F1C0CBFA2029A4C300510CF3 /* MineInfoViewController.h */,
+				F1C0CBFB2029A4C300510CF3 /* MineInfoViewController.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -3626,6 +3635,16 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		F1C0CBFD2029A5F600510CF3 /* YXDateSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				F1C0CBFE2029A5F600510CF3 /* YXDateSelectView.h */,
+				F1C0CBFF2029A5F600510CF3 /* YXDateSelectView.m */,
+				F1C0CC002029A5F600510CF3 /* YXDateSelectView.xib */,
+			);
+			path = YXDateSelectView;
+			sourceTree = "<group>";
+		};
 		F1D2C0B22027FCD6001BB006 /* Bmob */ = {
 			isa = PBXGroup;
 			children = (
@@ -3661,6 +3680,10 @@
 				F1D2C0C02027FCD6001BB006 /* BmobHttpApiPost.m */,
 				F1BA47B520285A1900897DBB /* BmobHttpApiDelete.h */,
 				F1BA47B620285A1900897DBB /* BmobHttpApiDelete.m */,
+				F1C0CC032029AC5900510CF3 /* BmobHttpApiPut.h */,
+				F1C0CC042029AC5900510CF3 /* BmobHttpApiPut.m */,
+				F1C4973B202AA46600A2EBF0 /* BmobHttpApiFile.h */,
+				F1C4973C202AA46600A2EBF0 /* BmobHttpApiFile.m */,
 			);
 			path = HttpApi;
 			sourceTree = "<group>";
@@ -3979,6 +4002,7 @@
 				F19D984E1E9F68EE00520A9A /* mod_control_paster_select@2x.png in Resources */,
 				F19D98711E9F68EE00520A9A /* strawberry_home_mine@3x.png in Resources */,
 				F19D98461E9F68EE00520A9A /* mod_control_paperinc_disabled@2x.png in Resources */,
+				F1C0CC022029A5F600510CF3 /* YXDateSelectView.xib in Resources */,
 				F19D985A1E9F68EE00520A9A /* mod_control_template_normal@2x.png in Resources */,
 				F19D98F51E9F68EE00520A9A /* PasterSectionView.xib in Resources */,
 				F1D2C176202837FD001BB006 /* qq@2x.png in Resources */,
@@ -4248,6 +4272,7 @@
 				F19D99091E9F68EE00520A9A /* TemplateViewModel.m in Sources */,
 				F19D9AAD1E9F6BAE00520A9A /* GWPathLine.m in Sources */,
 				F19D99C71E9F68EF00520A9A /* GPUImageToneCurveFilter.m in Sources */,
+				F1C0CBFC2029A4C300510CF3 /* MineInfoViewController.m in Sources */,
 				F19D99AB1E9F68EE00520A9A /* GPUImageSaturationBlendFilter.m in Sources */,
 				F19D99F01E9F68EF00520A9A /* MJRefreshBackGifFooter.m in Sources */,
 				F19D99381E9F68EE00520A9A /* GPUImageBrightnessFilter.m in Sources */,
@@ -4307,6 +4332,7 @@
 				F19D9B1F1E9F6ECE00520A9A /* ZYXRGBColorSelectView.m in Sources */,
 				F19D99691E9F68EE00520A9A /* GPUImageHardLightBlendFilter.m in Sources */,
 				F19D99D71E9F68EF00520A9A /* GPUImageZoomBlurFilter.m in Sources */,
+				F1C0CC052029AC5900510CF3 /* BmobHttpApiPut.m in Sources */,
 				F19D99E91E9F68EF00520A9A /* MJRefreshBackFooter.m in Sources */,
 				F19D99CA1E9F68EF00520A9A /* GPUImageTwoInputCrossTextureSamplingFilter.m in Sources */,
 				F19D9B1E1E9F6ECE00520A9A /* UIImage+CoreGraphics.m in Sources */,
@@ -4371,6 +4397,7 @@
 				F19D99481E9F68EE00520A9A /* GPUImageColourFASTFeatureDetector.m in Sources */,
 				F19D99B71E9F68EF00520A9A /* GPUImageSoftLightBlendFilter.m in Sources */,
 				F19D99D61E9F68EF00520A9A /* GPUImageXYDerivativeFilter.m in Sources */,
+				F1C4973D202AA46600A2EBF0 /* BmobHttpApiFile.m in Sources */,
 				F19D99781E9F68EE00520A9A /* GPUImageKuwaharaFilter.m in Sources */,
 				F1D2C0F420281017001BB006 /* NSURL+ZYX.m in Sources */,
 				F19D9B401E9F752F00520A9A /* ShowImageLayoutViewController.m in Sources */,
@@ -4489,6 +4516,7 @@
 				F19D99621E9F68EE00520A9A /* GPUImageGammaFilter.m in Sources */,
 				F19D999A1E9F68EE00520A9A /* GPUImagePerlinNoiseFilter.m in Sources */,
 				F19D9AEB1E9F6E6300520A9A /* ZYXImageFrameViewModel.m in Sources */,
+				F1C0CC012029A5F600510CF3 /* YXDateSelectView.m in Sources */,
 				F19D99671E9F68EE00520A9A /* GPUImageGrayscaleFilter.m in Sources */,
 				F19D99331E9F68EE00520A9A /* GPUImageAmatorkaFilter.m in Sources */,
 				F19D99771E9F68EE00520A9A /* GPUImageJFAVoronoiFilter.m in Sources */,

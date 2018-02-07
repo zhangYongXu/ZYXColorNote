@@ -15,6 +15,7 @@
 typedef void (^BmobDictionarySucessBlock)(NSDictionary *dictionary);
 typedef void (^BmobArraySucessBlock)(NSArray *array);
 typedef void (^BmobStringSucessBlock)(NSString *string);
+typedef void (^BmobFileSucessBlock)(BmobFile *bmobFile);
 typedef void (^BmobStringFailedBlock)(NSString *errorMsg);
 
 @interface BmobNetWork : NSObject
@@ -99,4 +100,27 @@ typedef void (^BmobStringFailedBlock)(NSString *errorMsg);
  *  @param path         请求路径
  */
 + (NSDictionary*)deleteSystemHttp:(NSString *)path;
+
+/**
+ *  put请求
+ *
+ *  @param path         请求路径
+ *  @param par          请求参数
+ *  @param show         是否显示加载提示
+ *  @param sucessBlock  成功回调
+ *  @param failedBlock  失败回调
+ */
++ (void)putSystemHttp:(NSString *)path parameters:(NSDictionary *)par showProgress:(BOOL)show sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock;
+
+/**
+ *  上传文件
+ *
+ *  @param fileData         文件数据
+ *  @param fileName         文件名称
+ *  @param show             是否显示加载提示
+ *  @param progressBlock    上传进度回调
+ *  @param sucessBlock      成功回调
+ *  @param failedBlock      失败回调
+ */
++ (void)uploadFileWithFileData:(NSData*)fileData FileName:(NSString*)fileName showProgress:(BOOL)show ProgressBlock:(GGProgressBlock)progressBlock sucess:(BmobFileSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock;
 @end

@@ -50,7 +50,7 @@
  *  @param faildBlock   失败回调
  */
 -(void)requestAllLayoutDataWithSuccessBlock:(YXSuccessBlock)successBlokc FaildBlock:(YXFaildBlock)faildBlock{
-    NSString * bql = @"select * from LayoutModel";
+    NSString * bql = @"select *,include publishUserPoint from LayoutModel";
     [BmobHttpApiGet getDataWithBql:bql showProgress:YES sucess:^(NSArray *array) {
         NSLog(@"requestAllLayoutDataWithSuccessBlock array:%@",array);
         self.netLaoutDataArray = [GWLayoutNetDataModel modelArrayFromDictArray:array];

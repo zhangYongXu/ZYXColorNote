@@ -314,7 +314,7 @@
         }
         if(!connectionError){
             [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
-            NSLog(@"BmobNetWork getHttp connectionError is %@",connectionError);
+            NSLog(@"BmobNetWork deleteSystemHttp connectionError is %@",connectionError);
             if (failedBlock) {
                 failedBlock(connectionError.description);
             }
@@ -364,5 +364,100 @@
         return @{@"code":@"1",@"responseDataDict":responseDataDict};;
     }
     
+}
+
+/**
+ *  put请求
+ *
+ *  @param path         请求路径
+ *  @param par          请求参数
+ *  @param show         是否显示加载提示
+ *  @param sucessBlock  成功回调
+ *  @param failedBlock  失败回调
+ */
++ (void)putSystemHttp:(NSString *)path parameters:(NSDictionary *)par showProgress:(BOOL)show sucess:(GGSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock {
+    
+    if(![self isNetworkConnected]){
+        [SVProgressHUD showErrorWithStatus:@"网络未连接或网络连接异常"];
+        return;
+    }
+    if (show) {
+        [SVProgressHUD showWithStatus:nil];
+    }
+    NSString * urlStr = [NSString stringWithFormat:@"%@%@",BmobBaseUrl,path];
+    NSURL * url = [NSURL ZYXURLWithString:urlStr];
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"put";
+    NSData * data = [NSJSONSerialization dataWithJSONObject:par options:NSJSONWritingPrettyPrinted error:nil];
+    NSLog(@"pustSystemHttp paramsJsonString:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    request.HTTPBody = data;
+    NSDictionary * header = [BmobRequestOperationManager bmobBaseHeader];
+    for(NSString * key in header.allKeys){
+        NSString * value = header[key];
+        [request setValue:value forHTTPHeaderField:key];
+    }
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(show){
+                [SVProgressHUD dismiss];
+            }
+            if(connectionError){
+                [SVProgressHUD showErrorWithStatus:@"无法连接到服务器"];
+                NSLog(@"BmobNetWork putSystemHttp connectionError is %@",connectionError);
+                if (failedBlock) {
+                    failedBlock(connectionError.description);
+                }
+            }else{
+                NSDictionary * dataDict = nil;
+                if(data){
+                    dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                }
+                if (sucessBlock) {
+                    sucessBlock(dataDict);
+                }
+            }
+        });
+    }];
+}
+
+/**
+ *  上传文件
+ *
+ *  @param fileData         文件数据
+ *  @param fileName         文件名称
+ *  @param show             是否显示加载提示
+ *  @param progressBlock    上传进度回调
+ *  @param sucessBlock      成功回调
+ *  @param failedBlock      失败回调
+ */
++ (void)uploadFileWithFileData:(NSData*)fileData FileName:(NSString*)fileName showProgress:(BOOL)show ProgressBlock:(GGProgressBlock)progressBlock sucess:(BmobFileSucessBlock)sucessBlock failed:(GGFailedBlock)failedBlock{
+    if(show){
+        [SVProgressHUD showWithStatus:nil];
+    }
+    BmobFile *file = [[BmobFile alloc] initWithFileName:fileName withFileData:fileData];
+    [file saveInBackground:^(BOOL isSuccessful, NSError *error) {
+        if(show){
+            [SVProgressHUD dismiss];
+        }
+        if (isSuccessful) {
+            NSLog(@"image file1 url %@",file.url);
+            if(sucessBlock){
+                sucessBlock(file);
+            }
+        }else{
+            if(failedBlock){
+                failedBlock(@"文件上传失败了");
+            }
+        }
+    } withProgressBlock:^(CGFloat progress) {
+        if(show){
+            [SVProgressHUD dismiss];
+        }
+        NSLog(@"文件上传进度%.2f",progress);
+        if(progressBlock){
+            progressBlock(progress);
+        }
+    }];
 }
 @end

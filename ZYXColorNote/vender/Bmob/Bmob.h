@@ -11,3 +11,5 @@
 #import "BmobHttpApiPost.h"
 #import "BmobHttpApiGet.h"
 #import "BmobHttpApiDelete.h"
+#import "BmobHttpApiPut.h"
+#import "BmobHttpApiFile.h"

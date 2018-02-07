@@ -31,6 +31,46 @@
                             <action selector="selectBtnClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qx6-0V-0XV"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" misplaced="YES" id="mi6-MH-N9c">
+                        <rect key="frame" x="0.0" y="190" width="193" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="YLO-BN-GyI">
+                                <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="17.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fse-ks-Sf5">
+                                <rect key="frame" x="51" y="10" width="134" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2012-09-88 23:33:11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="MAY-YF-gbn">
+                                <rect key="frame" x="51" y="28" width="134" height="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
             </view>
             <size key="customSize" width="193" height="235"/>
@@ -43,12 +83,16 @@
                     <real key="value" value="0.5"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
-                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="dateLabel" destination="MAY-YF-gbn" id="wwk-tk-rNi"/>
+                <outlet property="headerImageView" destination="YLO-BN-GyI" id="R2u-dk-rMC"/>
                 <outlet property="imageView" destination="r1K-2Y-LPZ" id="LNn-Gn-asY"/>
+                <outlet property="nameLabel" destination="fse-ks-Sf5" id="cr3-lw-IzF"/>
                 <outlet property="selectBtn" destination="lf8-cT-Ptb" id="kfZ-F3-eUc"/>
+                <outlet property="userView" destination="mi6-MH-N9c" id="SKD-jB-ANM"/>
             </connections>
             <point key="canvasLocation" x="96.5" y="144"/>
         </collectionViewCell>

@@ -36,7 +36,7 @@
     self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 902);
 }
 -(void)refreshUI{
-    NSString * nick_name = APPDelegate.userViewModel.localCacheUserModel.user_name;
+    NSString * nick_name = APPDelegate.userViewModel.localCacheUserModel.nick_name;
     NSString * image_url = APPDelegate.userViewModel.localCacheUserModel.img_url;
     if(APPDelegate.isUserHasLogin){
         self.nickNameLabel.text = nick_name;
@@ -49,6 +49,7 @@
 }
 - (IBAction)toLoginBtn:(id)sender {
     if(APPDelegate.isUserHasLogin){
+        [self performSegueWithIdentifier:@"MineToMineInfoSegue" sender:nil];
         return;
     }
     

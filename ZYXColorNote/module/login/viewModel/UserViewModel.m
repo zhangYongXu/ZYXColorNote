@@ -355,42 +355,25 @@
         return;
     }
     
-    NSString * u_id = [NSString stringWithFormat:@"%@",@(APPDelegate.userViewModel.localCacheUserModel.u_id)];
-    if(!APPDelegate.isUserHasLogin){
-        u_id = @"0";
-    }
-    
-    
-    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    [params setValue:@"iOS" forKey:@"from"];
-    [params setValue:u_id forKey:@"u_id"];
-   
-    NSDictionary * singParmas = [YXNetWork globalSignParamsWithPrames:params];
-    
-    NSLog(@"requestGetUserInfoWithSuccessBlock jsonParmas:%@",[NSString jsonStringWithDictionary:singParmas]);
-    
-    [YXNetWork postHttp:user_displayUserDetails parameters:singParmas showProgress:YES sucess:^(id responseObj) {
-        NSLog(@"requestGetUserInfoWithSuccessBlock responseObj Json:%@",[NSString jsonStringWithDictionary:responseObj]);
-        NSInteger code = [[responseObj objectForKey:@"code"] integerValue];
-        NSString * message = [responseObj objectForKey:@"message"];
-        message = STR_IS_NIL(message)?@"":message;
-        NSDictionary * dataDict = [responseObj objectForKey:@"result"];
-        if(1 == code){
+    NSString * userObjectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
+    NSString * bql = [NSString stringWithFormat:@"select * from LayoutUserModel where objectId = '%@'",userObjectId];
+    [BmobHttpApiGet getDataWithBql:bql showProgress:NO sucess:^(NSArray *array) {
+        NSLog(@"requestGetUserInfoWithSuccessBlock array:%@",array);
+        if(!ARRAY_IS_EMPTY(array)){
+            NSDictionary * dataDict = array.firstObject;
             UserModel * userModel = APPDelegate.userViewModel.localCacheUserModel;
-           
             [userModel setValuesForKeysWithDictionary:dataDict];
             APPDelegate.userViewModel.localCacheUserModel = userModel;
             
             if(successBlock){
-                successBlock(responseObj);
+                successBlock(dataDict);
             }
         }else{
             if(faildBlock){
+                NSString * message = @"查询用户信息失败";
                 faildBlock(message);
             }
-            [SVProgressHUD showSuccessWithStatus:message];
         }
-       
     } failed:^(NSString *errorMsg) {
         NSLog(@"requestGetUserInfoWithSuccessBlock errorMsg:%@",errorMsg);
         if(faildBlock){
@@ -407,64 +390,45 @@
  */
 
 -(void)requestUpdateUserInfoWithUserModel:(UserModel*)userModel SuccessBlock:(YXSuccessBlock)successBlock FaildBlock:(YXFaildBlock)faildBlock{
-    
-    NSString * u_id = [NSString stringWithFormat:@"%@",@(APPDelegate.userViewModel.localCacheUserModel.u_id)];
-    if(!APPDelegate.isUserHasLogin){
-        u_id = @"0";
-    }
 
     NSString * nick_name = userModel.nick_name;
-    NSString * sex = [NSString stringWithFormat:@"%@",@(userModel.sex)];
+    NSNumber * sex = @(userModel.sex);
     NSString * birthDay = userModel.birthday;
-    NSString * education = [NSString stringWithFormat:@"%@",@(userModel.education)];
+    NSNumber * education = @(userModel.education);
     NSString * trade = STR_IS_NIL(userModel.trade)?@"":userModel.trade;
     NSString * interest = STR_IS_NIL(userModel.interest)?@"":userModel.interest;;
     
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    [params setValue:@"iOS" forKey:@"from"];
-    [params setValue:u_id forKey:@"u_id"];
+
     [params setValue:nick_name forKey:@"nick_name"];
     [params setValue:sex forKey:@"sex"];
     [params setValue:birthDay forKey:@"birthday"];
     [params setValue:education forKey:@"education"];
     [params setValue:trade forKey:@"trade"];
     [params setValue:interest forKey:@"interest"];
+
+    NSString * userObjectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
+    BmobHttpApiUpdateItem * item = [[BmobHttpApiUpdateItem alloc] init];
+    item.tableName = @"LayoutUserModel";
+    item.objectId = userObjectId;
+    item.updateDataDict = params;
     
-//    NSMutableDictionary * encodeParams = [[NSMutableDictionary alloc] init];
-//    for(NSString * key in params){
-//        NSString * value = [[NSString stringWithFormat:@"%@",params[key]] encodeString];
-//        [encodeParams setValue:value forKey:key];
-//    }
-    
-    NSDictionary * singParmas = [YXNetWork globalSignParamsWithPrames:params];
-    
-    NSLog(@"requestUpdateUserInfoWithUserModel jsonParmas:%@",[NSString jsonStringWithDictionary:singParmas]);
-    
-    [YXNetWork postHttp:user_completeUserDetails parameters:singParmas showProgress:YES sucess:^(id responseObj) {
-        NSLog(@"requestUpdateUserInfoWithUserModel responseObj Json:%@",[NSString jsonStringWithDictionary:responseObj]);
-        NSInteger code = [[responseObj objectForKey:@"code"] integerValue];
-        NSString * message = [responseObj objectForKey:@"message"];
+    [BmobHttpApiPut updateDataWithBmobHttpApiUpdateItem:item showProgress:YES sucess:^(NSDictionary *dictionary) {
+        APPDelegate.userViewModel.localCacheUserModel = userModel;
         
-        if(1 == code){
-            APPDelegate.userViewModel.localCacheUserModel = userModel;
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Name_UserChangeBaseInfo object:nil];
-            if(successBlock){
-                successBlock(userModel);
-            }
-            [SVProgressHUD showSuccessWithStatus:message];
-        }else{
-            if(faildBlock){
-                faildBlock(message);
-            }
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Name_UserChangeBaseInfo object:nil];
+        if(successBlock){
+            successBlock(userModel);
         }
-        [SVProgressHUD showSuccessWithStatus:message];
+        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
     } failed:^(NSString *errorMsg) {
         NSLog(@"requestUpdateUserInfoWithUserModel errorMsg:%@",errorMsg);
         if(faildBlock){
             faildBlock(errorMsg);
         }
     }];
+    
+   
 }
 
 
@@ -477,77 +441,39 @@
  */
 -(void)requestUpdateUserHeadWithImage:(UIImage*)image SuccessBlock:(YXSuccessBlock)successBlock FaildBlock:(YXFaildBlock)faildBlock{
     
-    NSString * u_id = [NSString stringWithFormat:@"%ld",self.localCacheUserModel.u_id];
     
-    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    [params setValue:@"iOS" forKey:@"from"];
-    [params setValue:u_id forKey:@"u_id"];
-    
-    NSDictionary * singParmas = [YXNetWork globalSignParamsWithPrames:params];
-    
-    NSMutableArray * filesArray = [[NSMutableArray alloc] init];
-    InputFileModel * model = [[InputFileModel alloc] init];
-    model.inputName  = @"file";
-    model.fileName = [NSString stringWithFormat:@"%d_%@.jpg",(int)[[[NSDate alloc] init] timeIntervalSince1970],u_id];
-    model.fileType = @"image/jpge";
-    UIImage * oImage = image;
-    NSData * data = [InputFileModel imageCompressionDataWithImage:oImage];
-    model.fileData = data;
-    [filesArray addObject:model];
-//    if(nil == self.progressViewMask){
-//        self.progressViewMask = [YXMaskProgressView progressViewWithMask];
-//    }else{
-//        [self.progressViewMask showProgressView];
-//    }
     [SVProgressHUD showWithStatus:@"上传中..."];
-    NSLog(@"requestUpdateUserHeadWithImage jsonParmas:%@",[NSString jsonStringWithDictionary:singParmas]);
-    
-    [YXNetWork multipartFormRequestWithMethod:@"POST" path:user_completeUserHeadImg parameters:singParmas filesArray:filesArray uploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        CGFloat  progress = (totalBytesWritten/1.0)/(totalBytesExpectedToWrite/1.0);
-        CGFloat  tolalL = (totalBytesExpectedToWrite/1024.0);
-        CGFloat  writeL = (totalBytesWritten/1024.0);
-        //[self.progressViewMask setProgressValue:progress];
-        
-        NSString* text = [NSString stringWithFormat:@"总大小:%.2fkb,已上传:%.2fkb",tolalL,writeL];
-        //[self.progressViewMask setProgressLabelText:text];
-        NSLog(@"requestUpdateUserHeadWithImage:%@",text);
-        
-    } uploadSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary * responseObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"requestUpdateUserHeadWithImage responseObj Json:%@",[NSString jsonStringWithDictionary:responseObj]);
-        NSInteger code = [[responseObj objectForKey:@"code"] integerValue];
-        NSString * message = [responseObj objectForKey:@"message"];
-        message = STR_IS_NIL(message)?@"":message;
-        NSDictionary * dataDict = [responseObj objectForKey:@"result"];
-        
-        if (code == 1) {
-            NSString * img_url = [dataDict objectForKey:@"img_url"];
-            [[SDImageCache sharedImageCache] removeImageForKey:img_url withCompletion:^{
-                
-            }];
+    NSString * name = [NSString stringWithFormat:@"layoutUserHeaderImage_%@.png",@([[NSDate date] timeIntervalSince1970])];
+    [BmobHttpApiFile uploadImage:image imageFileName:name showProgress:NO ProgressBlock:^(CGFloat progress) {
+        NSLog(@"requestUpdateUserHeadWithImage:%.2f",progress);
+    } sucess:^(BmobFile *bmobFile) {
+        NSString * userObjectId = APPDelegate.userViewModel.localCacheUserModel.objectId;
+        BmobHttpApiUpdateItem *item = [[BmobHttpApiUpdateItem alloc] init];
+        item.tableName = @"LayoutUserModel";
+        item.objectId = userObjectId;
+        item.updateDataDict = @{
+                                    @"headerImageUrl":@{
+                                            @"__type":@"File",
+                                            @"filename":bmobFile.name,
+                                            @"url":bmobFile.url
+                                    }
+                                };
+        [BmobHttpApiPut updateDataWithBmobHttpApiUpdateItem:item showProgress:NO sucess:^(NSDictionary *dictionary) {
+            NSString * img_url = bmobFile.url;
             UserModel * userModel = APPDelegate.userViewModel.localCacheUserModel;
             userModel.img_url = img_url;
             APPDelegate.userViewModel.localCacheUserModel = userModel;
             
             if(successBlock){
-                successBlock(responseObj);
+                successBlock(dictionary);
             }
             [SVProgressHUD showSuccessWithStatus:@"上传头像成功"];
-        }else{if(faildBlock){
-            faildBlock(message);
-        }
-            [SVProgressHUD showErrorWithStatus:message];
-        }
-        //[self.progressViewMask dismissProgressView];
-        [SVProgressHUD dismiss];
-        
-    } uploadFaildBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //[self.progressViewMask dismissProgressView];
-        [SVProgressHUD dismiss];
-        if(faildBlock){
-            faildBlock(error.description);
-        }
-        NSLog(@"requestUpdateUserHeadWithImage errorMsg:%@",error.description);
+        } failed:^(NSString *errorMsg) {
+            NSLog(@"requestUpdateUserHeadWithImage errorMsg:%@",errorMsg);
+            [SVProgressHUD showErrorWithStatus:@"上传头像更新数据失败,请检查网络"];
+        }];
+    } failed:^(NSString *errorMsg) {
+        NSLog(@"requestUpdateUserHeadWithImage errorMsg:%@",errorMsg);
         [SVProgressHUD showErrorWithStatus:@"上传头像失败,请检查网络"];
     }];
 }
