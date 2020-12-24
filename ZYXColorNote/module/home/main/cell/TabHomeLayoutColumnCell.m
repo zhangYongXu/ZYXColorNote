@@ -38,8 +38,10 @@
 -(void)refreshUI{
     NSURL * url = [NSURL URLWithString:self.model.layoutPicImageUrl];
     [self.imageView sd_setImageWithURL:url completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        CGFloat height = (self.imageView.width/image.size.width)*image.size.height;
-        self.imageView.height = height;
+        if(nil != image){
+            CGFloat height = (self.imageView.width/image.size.width)*image.size.height;
+            self.imageView.height = height;
+        }
     }];
     
     if(nil != self.model.publishUserPoint){

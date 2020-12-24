@@ -18,6 +18,18 @@
     return self;
 }
 
+- (NSString *)layouJsonUrl{
+    if(!STR_IS_NIL(_layouJsonUrl) && [_layouJsonUrl containsString:@"https://"]){
+        _layouJsonUrl = [_layouJsonUrl stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
+    }
+    return _layouJsonUrl;
+}
+- (NSString *)layoutPicImageUrl{
+    if(!STR_IS_NIL(_layoutPicImageUrl) && [_layoutPicImageUrl containsString:@"https://"]){
+        _layoutPicImageUrl = [_layoutPicImageUrl stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
+    }
+    return _layoutPicImageUrl;
+}
 -(void)setPublishUserPoint:(UserModel *)publishUserPoint{
     if([publishUserPoint isKindOfClass:[NSDictionary class]]){
         _publishUserPoint = [[UserModel alloc] init];

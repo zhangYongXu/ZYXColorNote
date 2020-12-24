@@ -616,6 +616,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		466C4808259339F100FA48E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F19D8E841E9F543F00520A9A /* ZYXColorNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYXColorNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19D8E881E9F543F00520A9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F19D8E8A1E9F543F00520A9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3938,8 +3939,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F19D8E7B1E9F543F00520A9A;
 			productRefGroup = F19D8E851E9F543F00520A9A /* Products */;
@@ -4588,6 +4591,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F19D8E961E9F543F00520A9A /* Base */,
+				466C4808259339F100FA48E2 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
